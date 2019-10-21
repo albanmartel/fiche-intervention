@@ -1,7 +1,7 @@
 {
   "name": "ficheintervention",
   "version": "0.0.1",
-  "description": "Remplir une fiche d'intervention comme support de l'intervention et dela facturation.",
+  "description": "Remplir une fiche d'intervention comme support de l'intervention et de la facturation.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
