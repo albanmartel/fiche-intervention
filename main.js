@@ -91,7 +91,10 @@ function createMainWindow(){
 
 creationFenetreEvent.on('success', function(uri){
   console.log("creationFenetreEvent activé")
+  mainWindow.removeMenu()
   mainWindow.setTitle("Logiciel de Création de Fiche d'Intervention")
+  /* Les 2 chargements successifs pour corriger bug linux */
+  mainWindow.loadURL("http://0.0.0.0")
   mainWindow.loadURL(uri)
   mainWindow.show()
 })
