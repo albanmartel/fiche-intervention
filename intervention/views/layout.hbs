@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>{{{block "title"}}}</title>
+  <script type="text/javascript" src="./javascripts/jquery-3.2.1.js" onload="window.$ = window.jQuery = module.exports;" ></script>
+  <script type="text/javascript" src="./javascripts/jquery-ui.js" ></script>
+  <script type="text/javascript" src="./javascripts/jquery.ui.datepicker-fr.js"></script>
+  <script type="text/javascript" src="./javascripts/jquery-browser-plugin.js"></script>
+  <script type="text/javascript" src="./javascripts/jquery.ui.datepicker-fr.js"></script>
+  <script type="text/javascript" src="./javascripts/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/jquery-ui.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/print.css" media="print" />
+
+  {{{block "scripts"}}}
+</head>
+<body>
+  <div class="container">
+    <header>
+      {{{block "header"}}}
+    </header>
+     {{{block titre2}}}
+     {{{block "body"}}}
+  </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{{#extend "title"}}
+  Fiche d'intervention
+{{/extend}}
+
+{{#extend "scripts"}}
+  <script type="text/javascript" src="./javascripts/index.js"></script>
+  {{> envoyer}}
+{{/extend}}
+
+{{#extend "header"}}
+  <div class="jumbotron text-center">
+    <h1>Fiche d'Intervention</h1>
+  </div>
+{{/extend}}
+
+{{#extend "body"}}
+  {{> indexBody}}
+  {{> footerScript}}
+  <script type="text/javascript">
+      $(document).ready(function(){
+        insererValueursPrecedemmentRecuperees()
+      })
+  </script>
+{{/extend}}

@@ -1,0 +1,412 @@
+{{#extend "title"}}
+  Fiche d'intervention
+{{/extend}}
+
+{{#extend "scripts"}}
+  <script type="text/javascript" src="./javascripts/index.js"></script>
+  <script type="text/javascript">
+    function printPage() {
+      window.print()
+    }
+
+    function printDocument() {
+      $.post(
+        '/printpdfdocument', {
+          evenement: "sauvegarder"
+        },
+        function(data) {
+          console.log('imprimer intervention en pdf')
+          console.log(data)
+        },
+        'text'
+      )
+    }
+
+    function completerFiche() {
+      $.post(
+        'corriger',
+        'text')
+      window.location = '{{windowRedirect}}'
+    }
+
+    function enregistrerFiche() {
+      $.post(
+        'enregistrer',
+        'text')
+    }
+  </script>
+{{/extend}}
+
+{{#extend "header"}}
+  <div class="row">
+    <div class="page-header text-center bg-primary">
+      <br/>
+      <h4>FACTURE D'INTERVENTION N° {{donneesIntervention.numeroFacture}} </h4>
+    </div>
+  </div>
+{{/extend}}
+
+
+{{#extend "body"}}
+  {{fichierTemporaire}}
+  <div class="row">
+    <div class="col-xs-6 text-center cadreRond">
+      <h4>{{entreprise.nom}}</h4>
+      <div class="text-left">
+        <p>Demande du <b>{{donneesIntervention.dateDemande}}</b>
+          {{#if donneesIntervention.redacteur}}
+            notée par <b>{{donneesIntervention.redacteur}}</b>
+          {{/if}}
+        </p>
+        <p><b>{{donneesIntervention.motif}} {{donneesIntervention.typeDepannage}} {{donneesIntervention.garantie}}</b></p>
+        <p>
+          {{#if donneesIntervention.marque}}
+            Marque : <b>{{donneesIntervention.marque}}</b>
+          {{/if}}
+
+          {{#if donneesIntervention.modele}}
+            Modèle : <b>{{donneesIntervention.modele}}</b>
+          {{/if}}
+        </p>
+        <p>
+          {{#if donneesIntervention.numSerie}}
+            N° Série : <b>{{donneesIntervention.numSerie}}</b>
+          {{/if}}
+
+          {{#if donneesIntervention.dateAchat}}
+            Achat : <b>{{donneesIntervention.dateAchat}}</b>
+          {{/if}}
+        </p>
+        {{#if donneesIntervention.motifIntervention}}
+          <p>Précisions : <b>{{donneesIntervention.motifIntervention}}</b> </p>
+        {{/if}}
+        <p>
+          {{#if donneesIntervention.urgence}}
+            Intervention : <b>{{donneesIntervention.urgence}}</b>
+          {{/if}}
+        </p>
+        <p>
+          {{#if donneesIntervention.technicien}}
+            Technicien : <b>{{donneesIntervention.technicien}}</b>
+          {{/if}}
+        </p>
+        <p>
+          {{#if donneesIntervention.datePrevue}}
+            RDV : <b>{{donneesIntervention.datePrevue}} {{donneesIntervention.heurePrevue}}</b>
+          {{/if}}
+        </p>
+      </div>
+    </div>
+    <div class="col-xs-1">
+      <p>&nbsp</p>
+    </div>
+    <div class="col-xs-5 text-left cadreRond">
+      <h4 class="text-center">CLIENT</h4>
+      <p><b>{{donneesIntervention.civiliteClient}} {{donneesIntervention.prenomClient}} {{donneesIntervention.nomClient}}</b></p>
+      <p>
+        {{#if donneesIntervention.courriel}}
+          <p><b>{{donneesIntervention.courriel}}</b></p>
+        {{/if}}
+        {{#if donneesIntervention.batiment}}
+          bât. <b>{{donneesIntervention.batiment}}</b>,
+        {{/if}}
+        {{#if donneesIntervention.codeAcces}}
+          code : <b>{{donneesIntervention.codeAcces}}</b>,
+        {{/if}}
+        {{#if donneesIntervention.escalier}}
+          esc. <b>{{donneesIntervention.escalier}}</b>,
+        {{/if}}
+        {{#if donneesIntervention.etage}}
+          ét. <b>{{donneesIntervention.etage}}</b>,
+        {{/if}}
+        {{#if donneesIntervention.appartement}}
+          app. <b>{{donneesIntervention.appartement}}</b>
+        {{/if}}
+      </p>
+      {{#if donneesIntervention.complementAdresse}}
+        <p><b>{{donneesIntervention.complementAdresse}}</b>
+      {{/if}}
+      </b>
+      </p>
+      {{#if donneesIntervention.villeAdresse}}
+        <a id="linkaddress" href="{{donneesIntervention.linkItineraire}}">
+          <p><b>{{donneesIntervention.numVoieAdresse}} {{donneesIntervention.typeVoieAdresse}} {{donneesIntervention.nomVoieAdresse}} {{donneesIntervention.codePostal}} {{donneesIntervention.villeAdresse}}</b></p>
+        </a>
+      {{/if}}
+      <p>
+        {{#if donneesIntervention.tel1Client}}
+          Tél. <b>{{donneesIntervention.tel1Client}}</b>
+        {{/if}}
+        {{#if donneesIntervention.tel2Client}}
+          / <b>{{donneesIntervention.tel2Client}}</b>
+        {{/if}}
+      </p>
+      <p>
+        {{#if donneesIntervention.fax}}
+          <p>Fax : <b>{{donneesIntervention.fax}}</b></p>
+        {{/if}}
+    </div>
+  </div>
+
+  <br/>
+  <div class="row">
+    <div class="col-xs-12 column ui-sortable text-center">
+      <b>
+        <p>
+          {{#if testGarantie}}
+           {{garantie.horsGarantie}}
+       {{else}}
+           &nbsp
+       {{/if}}
+       </b>
+      <br/>
+    </div>
+  </div>
+  <div class="row">
+    <table>
+      <tr>
+        <td class="col-xs-10 tableau haut">&nbsp</td>
+        <td class="col-xs-2 tableau haut">&nbsp</td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 text-center tableau bas"><b>Service / Produit / Quantité </b></td>
+        <td class="col-xs-2 text-center tableau bas"><b>Montant TTC</b></td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 tableau">&nbsp</td>
+        <td class="col-xs-2 tableau">&nbsp</td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 tableau bas">
+          {{#if donneesIntervention.description1}}
+            {{donneesIntervention.description1}}
+          {{else}}
+            &nbsp
+          {{/if}}
+        </td>
+        <td class="col-xs-2 tableau bas text-right">
+          {{#if donneesIntervention.montant1}}
+            {{donneesIntervention.montant1}}
+          {{else}}
+            &nbsp
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 tableau">&nbsp</td>
+        <td class="col-xs-2 tableau">&nbsp</td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 tableau bas">
+          {{#if donneesIntervention.description2}}
+            {{donneesIntervention.description2}} environ {{donneesIntervention.distanceAdresse}}
+          {{else}}
+            &nbsp
+          {{/if}}
+        </td>
+        <td class="col-xs-2 tableau bas text-right">
+          {{#if donneesIntervention.montant2}}
+            {{donneesIntervention.montant2}}
+          {{else}}
+            &nbsp
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 tableau">&nbsp</td>
+        <td class="col-xs-2 tableau">&nbsp</td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 tableau bas ">
+          {{#if donneesIntervention.description3}}
+            {{donneesIntervention.description3}}
+          {{else}}
+            &nbsp
+          {{/if}}
+        </td>
+        <td class="col-xs-2 tableau bas text-right">
+          {{#if donneesIntervention.montant3}}
+            {{donneesIntervention.montant3}}
+          {{else}}
+            &nbsp
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 tableau">&nbsp</td>
+        <td class="col-xs-2 tableau">&nbsp</td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 tableau bas">
+          {{#if donneesIntervention.description4}}
+            {{donneesIntervention.description4}}
+          {{else}}
+            &nbsp
+          {{/if}}
+        </td>
+        <td class="col-xs-2 tableau bas text-right">
+          {{#if donneesIntervention.montant4}}
+            {{donneesIntervention.montant4}}
+          {{else}}
+            &nbsp
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 tableau">&nbsp</td>
+        <td class="col-xs-2 tableau">&nbsp</td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 tableau bas">
+          {{#if donneesIntervention.description5}}
+            {{donneesIntervention.description5}}
+          {{else}}
+            &nbsp
+          {{/if}}
+        </td>
+        <td class="col-xs-2 tableau bas text-right">
+          {{#if donneesIntervention.montant5}}
+            {{donneesIntervention.montant5}}
+          {{else}}
+            &nbsp
+          {{/if}}
+        </td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 tableau">&nbsp</td>
+        <td class="col-xs-2 tableau">&nbsp</td>
+      </tr>
+      <tr>
+        <td class="col-xs-10 tableau bas">
+          {{#if donneesIntervention.description6}}
+            {{donneesIntervention.description6}}
+          {{else}}
+            &nbsp
+          {{/if}}
+        </td>
+        <td class="col-xs-2 tableau bas  text-right">
+          {{#if donneesIntervention.montant6}}
+            {{donneesIntervention.montant6}}
+          {{else}}
+            &nbsp
+          {{/if}}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <br/>
+  <div class="row">
+    <b>
+      <table>
+        <tr>
+          <td class="col-xs-3 text-right">Moyen de Paiement :</td>
+          <td class="col-xs-2 text-right">&nbsp</td>
+          <td class="col-xs-2 text-right">&nbsp</td>
+          <td class="col-xs-3 text-right">TOTAL TTC</td>
+          <td class="col-xs-2 tableauBasDroit">&nbsp</td>
+        </tr>
+        <tr>
+          <td class="col-xs-3 text-right">&nbsp</td>
+          <td class="col-xs-2 text-right">&nbsp</td>
+          <td class="col-xs-2 text-right">&nbsp</td>
+          <td class="col-xs-3 text-right">TVA {{#if donneesIntervention.txTVA}}{{donneesIntervention.txTVA}} % {{/if}}</td>
+          <td class="col-xs-2 tableauBasDroit">&nbsp</td>
+        </tr>
+        <tr>
+          <td class="col-xs-3 text-right">Date de Paiement :</td>
+          <td class="col-xs-2 text-right">&nbsp</td>
+          <td class="col-xs-2 text-right">&nbsp</td>
+          <td class="col-xs-3 text-right">TOTAL HT</td>
+          <td class="col-xs-2 tableauBasDroit">&nbsp</td>
+        </tr>
+        <tr>
+          <td class="col-xs-3 text-right">&nbsp</td>
+          <td class="col-xs-2 text-right">&nbsp</td>
+          <td class="col-xs-2 text-right">&nbsp</td>
+          <td class="col-xs-3 text-right">ACCOMPTE</td>
+          <td class="col-xs-2 tableauBasDroit">{{#if donneesIntervention.accompte}}{{donneesIntervention.accompte}} € {{else}}&nbsp{{/if}}</td>
+        </tr>
+        <tr>
+          <td class="col-xs-3 text-right">&nbsp</td>
+          <td class="col-xs-2 text-right">&nbsp</td>
+          <td class="col-xs-2 text-right">&nbsp</td>
+          <td class="col-xs-3 text-right">NET À PAYER</td>
+          <td class="col-xs-2 tableauBasDroit">&nbsp</td>
+        </tr>
+      </table>
+    </b>
+  </div>
+  <br/>
+  <div class="row cadreRond">
+    <div class="col-xs-12 text-center">
+      <br/>
+      <b>
+  					<p>{{entreprise.nom}} &nbsp {{entreprise.adresse1}} {{entreprise.adresse2}}</p>
+  					<p>Tel : {{entreprise.tel}} &nbsp - &nbsp Fax : {{entreprise.fax}} &nbsp - &nbsp {{entreprise.mail}}</p>
+  					<p>{{entreprise.formeJuridique}} &nbsp - &nbsp N° SIREN : {{entreprise.siren}} &nbsp - &nbsp {{entreprise.rcc}}</p>
+  					<p>N° TVA Intra : {{entreprise.TVA}} &nbsp - &nbsp Code NAF : {{entreprise.naf}}</p>
+  			</b>
+    </div>
+  </div>
+  <div class="row no-print text-right">
+    <input type="button" class="btn bg-primary" id="completer" value="Compléter / corriger" />
+    <input type="button" class="btn bg-primary" id="print" value="Imprimer" />
+    <input type="button" class="btn bg-primary" id="save" value="Enregistrer fiche" />
+    <input type="button" class="btn bg-primary" id="generer" value="Voir PDF" />
+  </div>
+
+  <script type="text/javascript">
+    $("#completer").click(function() {
+      completerFiche()
+    })
+
+    $("#print").click(function() {
+      printPage()
+    })
+
+    $("#save").click(function() {
+      enregistrerFiche()
+    })
+
+    $("#generer").click(function() {
+      printDocument()
+    })
+
+    $(document).ready(function() {
+      prepareValeurs()
+    })
+
+    $('body').keypress(function(e) {
+      var key = e.which
+      if (key == 13) //code pour la touche entrée
+      {
+        completerFiche()
+        return false
+      }
+    })
+
+    $('body').keydown(function(e) {
+      var key = undefined
+      var possible = [e.key, e.keyIdentifier, e.keyCode, e.which]
+      while (key === undefined && possible.length > 0) {
+        key = possible.pop()
+      }
+      if (key && (key == '115' || key == '83') && (e.ctrlKey || e.metaKey) && !(e.altKey)) {
+        enregistrerFiche()
+      }
+      return true
+    })
+
+    $('body').keydown(function(e) {
+      var key = undefined
+      var possible = [e.key, e.keyIdentifier, e.keyCode, e.which]
+      while (key === undefined && possible.length > 0) {
+        key = possible.pop()
+      }
+      if (key && (key == '80') && (e.ctrlKey || e.metaKey) && !(e.altKey)) {
+        printPage()
+      }
+      return true
+    })
+  </script>
+{{/extend}}

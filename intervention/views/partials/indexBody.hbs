@@ -1,0 +1,363 @@
+  <div class="bg-primary btn-lg">
+    <h4>Demande</h4>
+  </div>
+  <br/>
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="comment">Rédacteur fiche</label>
+        <input type="text" class="form-control" id="redacteur" />
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="text" class="form-control datepicker" id="dateDemande" />
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="typeDepannage">Matériel visé par l'intervention</label>
+        <select class="form-control" id="typeDepannage">
+          {{{intervention}}}
+       </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="motif">Motif de la demande</label>
+        <select class="form-control" id="motif">
+                   <option value="Réparation">Réparation</option>
+                   <option value="Devis">Devis</option>
+                   <option value="Remplacement">Remplacement</option>
+                   <option value="Livraison">Livraison</option>
+             </select>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="deplacementChoix1">Déplacement</label>
+        <select class="form-control" id="deplacement">
+                 <option value="Chez le client">Chez le client</option>
+                 <option value="En Atelier">En Atelier</option>
+           </select>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="priorite">Priorité d'intervention</label>
+        <select class="form-control" id="urgence">
+                   <option value="Non Prioritaire">Non Prioritaire</option>
+                   <option value="Prioritaire">Prioritaire</option>
+             </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="motif">Précisions du client</label>
+    <textarea class="form-control" id="motifIntervention" placeholder="Diagnostic du client / Besoin du client"/></textarea
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="control-label">Marque</label>
+        <input type="text" class="form-control" id="marque" />
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="control-label">Modèle</label>
+        <input type="text" class="form-control" id="modele" />
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="control-label">N° Série</label>
+        <input type="text" class="form-control" id="nserie" />
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="control-label">Date Achat</label>
+        <input type="text" class="form-control" id="dateAchat" />
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="deplacementChoix1">Sous-Garantie / Hors-Garantie</label>
+    <select class="form-control" id="garantie">
+             <option value="Hors-Garantie">Hors-Garantie</option>
+             <option value="Sous-Garantie">Sous-Garantie</option>
+         </select>
+  </div>
+  <div class="form-group">&nbsp</div>
+  <div class="bg-primary btn-lg">
+    <h4>Client</h4>
+  </div>
+  <br/>
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="prenomClient">Civilité</label>
+        <select class="form-control" id="civiliteClient">
+                  <option value="Madame">Madame</option>
+                  <option value="Mademoiselle">Mademoiselle</option>
+                  <option value="Monsieur">Monsieur</option>
+            </select>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="prenomClient">Prénom</label>
+        <input type="text" class="form-control" id="prenomClient" />
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label for="nomClient">Nom</label>
+        <input type="text" class="form-control" id="nomClient" />
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label for="telephoneClient">Téléphone 1</label>
+        <input type="text" class="form-control" id="telephone1" />
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label for="telephoneClient">Téléphone 2</label>
+        <input type="text" class="form-control" id="telephone2" />
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label for="telecopie">Télécopie</label>
+        <input type="text" class="form-control" id="telecopie" />
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label for="courrielClient">Courriel</label>
+        <input type="text" class="form-control" id="courriel" />
+      </div>
+    </div>
+  </div>
+  <div class="form-group">&nbsp</div>
+  <div class="bg-primary btn-lg">
+    <h4>Adresse</h4>
+  </div>
+  <br/>
+  <div class="form-group row">
+    <div class="col-sm-4">
+      <div class="form-group">
+        <label class="control-label">bâtiment</label>
+        <input type="text" class="form-control" id="batiment" />
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="control-label">code</label>
+        <input type="text" class="form-control" id="codeAcces" />
+      </div>
+    </div>
+    <div class="col-sm-1">
+      <div class="form-group">
+        <label class="control-label">escalier</label>
+        <input type="text" class="form-control" id="escalier" />
+      </div>
+    </div>
+    <div class="col-sm-1">
+      <div class="form-group">
+        <label class="control-label">étage</label>
+        <input type="text" class="form-control" id="etage" />
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="control-label">appartement</label>
+        <input type="text" class="form-control" id="appartement" />
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <div class="form-group">
+        <label for="numVoie">N° voie</label>
+        <input type="text" class="form-control" id="numeroVoie" />
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="form-group">
+        <label for="typeVoie">Type voie</label>
+        <input type="text" class="form-control" id="voie" />
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="form-group">
+        <label for="nomVoie">Nom Voie</label>
+        <input type="text" class="form-control" id="nomvoie" />
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="complementAdresse">Complément Adresse </label>
+    <input type="text" class="form-control" id="complementAdresse" />
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-2">
+      <div class="form-group">
+        <label for="codeP">Code postal</label>
+        <input type="text" class="form-control" id="codePostal" name="code_Postal" placeholder="31000" />
+      </div>
+    </div>
+    <div class="col-sm-10">
+      <div class="form-group">
+        <label for="Ville">Ville</label>
+        <input type="text" class="form-control" id="ville" name="ville" placeholder="Toulouse" />
+      </div>
+    </div>
+  </div>
+  <div class="form-group">&nbsp</div>
+  <div class="bg-primary btn-lg">
+    <h4>Intervention</h4>
+  </div>
+  <br/>
+  <div class="form-group row">
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label for="Dustance">Technicien</label>
+        <input type="text" class="form-control" id="technicien" />
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="form-group">
+        <label for="Dustance">Date Prévue</label>
+        <input type="text" id="datePrevue" class="form-control datepicker" name="datePrevue" />
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label for="Dustance">Moment passage</label>
+        <select class="form-control" id="heurePrevue">
+          {{{horaires}}}
+        </select>
+      </div>
+    </div>
+    <!--<div class="col-sm-2">
+      <div class="form-group">
+        <label for="Dustance">Durée Prévue</label>
+        <input type="text" id="dureePrevue" class="form-control" name="dureePrevue" />
+      </div>
+    </div>-->
+    <div class="col-sm-2">
+      <div class="form-group">
+        <label id="distanceLabel" for="Dustance">Distance</label>
+        <input type="text" class="form-control" id="distance" name="distance" placeholder="2,5 km" />
+      </div>
+    </div>
+  </div>
+  <div class="bg-primary btn-lg">
+    <h4>Facturation</h4>
+  </div>
+  <br/>
+  <div class="form-group row">
+    <div class="col-sm-9">
+      <div class="form-group">
+          <input type="text" class="form-control" id="description1" value="{{lignesFacturation.description1}}" placeholder="Produit / Service n°1"/>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+          <input type="text" class="form-control" id="montant1" value="{{lignesFacturation.montant1}}" placeholder="Montant n°2"/>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-9">
+      <div class="form-group">
+        <input type="text" class="form-control" id="description2" value="{{lignesFacturation.description2}}" placeholder="Produit / Service n°2"/>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <input type="text" class="form-control" id="montant2" value="{{lignesFacturation.montant2}}" placeholder="Montant n°2"/>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-9">
+      <div class="form-group">
+        <input type="text" class="form-control" id="description3" value="{{lignesFacturation.description3}}" placeholder="Produit / Service n°3"/>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <input type="text" class="form-control" id="montant3" value="{{lignesFacturation.montant3}}" placeholder="Montant n°3"/>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-9">
+      <div class="form-group">
+        <input type="text" class="form-control" id="description4" value="{{lignesFacturation.description4}}" placeholder="Produit / Service n°4"/>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <input type="text" class="form-control" id="montant4" value="{{lignesFacturation.montant4}}" placeholder="Montant n°4"/>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-9">
+      <div class="form-group">
+        <input type="text" class="form-control" id="description5" value="{{lignesFacturation.description5}}" placeholder="Produit / Service n°5"/>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <input type="text" class="form-control" id="montant5" value="{{lignesFacturation.montant5}}" placeholder="Montant n°5"/>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-9">
+      <div class="form-group">
+        <input type="text" class="form-control" id="description6" value="{{lignesFacturation.description6}}" placeholder="Produit / Service n°6"/>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <input type="text" class="form-control" id="montant6" value="{{lignesFacturation.montant6}}" placeholder="Montant n°6"/>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+  <div class="col-sm-2">
+    <div class="form-group">
+      <label for="Dustance">Accompte</label>
+      <input type="text" id="accompte" class="form-control"/>
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <div class="form-group">
+      <label for="Dustance">Taux TVA</label>
+      <input type="text" class="form-control" id="txTVA" value="20"/>
+    </div>
+  </div>
+</div>
+  <button class="btn bg-primary pull-right" id="valider">Valider</button>
+  <script type="text/javascript">
+    var dateTest = null
+    {{# if donneesIntervention.dateDemande }}
+      dateTest = "{{donneesIntervention.dateDemande}}"
+    {{ else }}
+      dateTest = "{{dateNow}}"
+    {{/if}}
+  </script>

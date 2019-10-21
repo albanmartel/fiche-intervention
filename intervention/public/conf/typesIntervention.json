@@ -1,0 +1,32 @@
+{
+  "typesIntervention": {
+    "1": "Antenne",
+    "2": "TV",
+    "3": "Vidéo" ,
+    "4": "HIFI",
+    "5": "Lave Linge",
+    "6": "Sèche Linge",
+    "7": "Lave Vaisselle",
+    "8": "Réfrégérateur",
+    "9": "Congélateur",
+    "10": "Climatisation",
+    "11": "Hotte-aspirante",
+    "12": "Cuisine",
+    "13": "Four",
+    "14": "Plaques",
+    "15": "Petit électroménager"
+  },
+  "horairesTranches": {
+    "1": "9h30-11h30",
+    "2": "14h00-16h00",
+    "3": "16h00-18h00"
+  },
+  "indicationsMomentJournee": {
+    "1": "Début Matinée",
+    "2": "Milieu Matinée",
+    "3": "Fin Matinée",
+    "4": "Début Après-Midi",
+    "5": "Milieu Après-Midi",
+    "6": "Fin Après-Midi"
+  }
+}

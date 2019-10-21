@@ -1,0 +1,112 @@
+<script type="text/javascript">
+
+function codePostauxDistance(data){
+  let requetePostal =  {
+      31000: "3 km",
+      31100: "13,5 km",
+      31120: "20 km",
+      31130: "15 km",
+      31140: "12 km",
+      31150: "12 km",
+      31170: "15 km",
+      31200: "2,4 km",
+      31240: "10,5 km",
+      31270: "17,5 km",
+      31280: "21 km",
+      31300: "8 km",
+      31400: "15,5 km",
+      31490: "20 km",
+      31500: "10 km",
+      31650: "18 km",
+      31520: "19 km",
+      31700: "15 km",
+      31750: "24 km",
+      31770: "13 km",
+      31780: "11,5 km",
+      31790: "19 km",
+      31820: "17 km",
+      31830: "16 km",
+      31840: "16 km",
+      31850: "12 km"
+    }
+    return requetePostal[data]
+}
+
+
+  function formaterLesMontants(data) {
+    if (data === "") {
+      return data
+    } else {
+      data = data.replace(/(\d+)\s/g, '$1')
+      data = data.replace(/(€|\$|£)/g, '')
+      data = data.replace(/(\d+)\,(\d*)/g, '$1.$2')
+      data = Number(data).toFixed(2)
+      data = data.toString()
+      let arrondi = data.substring(data.length - 2, data.length)
+      let reste = data.substring(0, data.length - 3)
+      reste = reste.split("").reverse().join("")
+      reste = reste.replace(/(\d{3})/g, '$1 ')
+      reste = reste.split("").reverse().join("")
+      return reste + "," + arrondi + " €"
+    }
+  }
+
+  function envoyer() {
+    $.post(
+      'recapitulation', {
+        redacteur: $('#redacteur').val(),
+        dateDemande: $("#dateDemande").val(),
+        typeDepannage: $("#typeDepannage").val(),
+        motif: $('#motif').val(),
+        deplacement: $('#deplacement').val(),
+        urgence: $("#urgence").val(),
+        motifIntervention: $("#motifIntervention").val().replace(/\s\s*/g, ' '),
+        marque: $('#marque').val(),
+        modele: $('#modele').val(),
+        numSerie: $('#nserie').val(),
+        dateAchat: $('#dateAchat').val(),
+        garantie: $('#garantie').val(),
+        civiliteClient: $('#civiliteClient').val(),
+        prenomClient: $("#prenomClient").val(),
+        nomClient: $('#nomClient').val().toUpperCase(),
+        tel1Client: $("#telephone1").val().replace(/(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/g, '$1 $2 $3 $4 $5'),
+        tel2Client: $("#telephone2").val().replace(/(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/g, '$1 $2 $3 $4 $5'),
+        fax: $("#telecopie").val().replace(/(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/g, '$1 $2 $3 $4 $5'),
+        courriel: $("#courriel").val(),
+        batiment: $('#batiment').val(),
+        codeAcces: $('#codeAcces').val(),
+        escalier: $('#escalier').val(),
+        etage: $('#etage').val(),
+        appartement: $('#appartement').val(),
+        numVoieAdresse: $("#numeroVoie").val(),
+        typeVoieAdresse: $("#voie").val(),
+        nomVoieAdresse: $("#nomvoie").val(),
+        complementAdresse: $("#complementAdresse").val(),
+        codePostal: $("#codePostal").val(),
+        villeAdresse: $("#ville").val(),
+        technicien: $("#technicien").val(),
+        datePrevue: $("#datePrevue").val(),
+        heurePrevue: $("#heurePrevue").val(),
+        dureePrevue: $("#dureePrevue").val(),
+        distanceAdresse: $("#distance").val(),
+        description1: $("#description1").val(),
+        montant1: formaterLesMontants($("#montant1").val()),
+        description2: $("#description2").val(),
+        montant2: formaterLesMontants($("#montant2").val()),
+        description3: $("#description3").val(),
+        montant3: formaterLesMontants($("#montant3").val()),
+        description4: $("#description4").val(),
+        montant4: formaterLesMontants($("#montant4").val()),
+        description5: $("#description5").val(),
+        montant5: formaterLesMontants($("#montant5").val()),
+        description6: $("#description6").val(),
+        montant6: formaterLesMontants($("#montant6").val()),
+        txTVA: $("#txTVA").val(),
+        accompte: $("#accompte").val(),
+        numeroFacture: "{{numFact}}",
+        linkItineraire: "https://www.google.fr/maps/dir/147+Avenue+des+Minimes,+31200+Toulouse/" + $("#numeroVoie").val() + "+" + $("#voie").val() + "+" + $("#nomvoie").val().replace(/\s/g, '+') + ",+" + $("#codePostal").val() + "+" + $("#ville").val(),
+      },
+      'text')
+    window.location = '{{windowRedirect}}'
+  }
+</script>

@@ -1,0 +1,23 @@
+body {
+  height: 768px, width: 1024px,
+}
+
+}
+
+@page {
+  /*size:  auto;   */
+  /* auto is the initial value */
+  /*size: 768px 1024px;*/
+  size: A4 portrait;
+  margin: 0mm;
+  /* this affects the margin in the printer settings */
+}
+
+.no-print, .no-print * {
+  display: none !important;
+}
+
+a[href]:after {
+  color: blue;
+  content: none !important;
+}

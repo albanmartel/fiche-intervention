@@ -1,0 +1,112 @@
+body, div, table, thead, tbody, tfoot, tr, th, td, p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+a.comment-indicator:hover+comment {
+  background: #ffd;
+  position: absolute;
+  display: block;
+  border: 1px solid black;
+  padding: 0.5em;
+}
+
+a.comment-indicator {
+  background: red;
+  display: inline-block;
+  border: 1px solid black;
+  width: 0.5em;
+  height: 0.5em;
+}
+
+comment {
+  display: none;
+}
+
+.barre {
+  text-align: center;
+  width: 740px;
+  padding: 15px;
+  border: solid 1px;
+}
+
+.rond {
+  border: solid 1px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.carre {
+  border: solid 1px;
+  text-align: center;
+}
+
+@page {
+  /*size: auto;*/
+  size: A4 landscape;
+  margin: 0mm;
+  /* this affects the margin in the printer settings */
+}
+
+.carreEntreprise {
+  float: left;
+  width: 410px;
+  padding: 15px;
+}
+
+.milieu {
+  float: left;
+  width: 30px;
+  padding: 15px;
+}
+
+.carreClient {
+  float: left;
+  width: 300px;
+  padding: 15px;
+}
+
+.left {
+  text-align: left;
+}
+
+.Table {
+  clear: left;
+  width: 740px;
+}
+
+#garantie {
+  clear: left;
+  text-align: center;
+  width: 740px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 720px;
+}
+
+.carreGauche {
+  float: left;
+  width: 600px;
+  border: solid 1px;
+}
+
+.carreDroit {
+  float: left;
+  width: 120px;
+  border: solid 1px;
+}
+
+.carreMilieu {
+  clear: left;
+  text-align: right;
+  width: 740px;
+}
+
+.carreDeDroite {
+  border: 1px solid #000000;
+  width: 130px;
+}

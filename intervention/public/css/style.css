@@ -1,0 +1,65 @@
+
+  .page-header{
+  /*border-radius: 15px;*/
+  border: black;
+  border-style: solid;
+  border-width: 1px;
+  background-color: #428bca;
+}
+
+.cadreRond {
+    border-color: black;
+    border-radius: 15px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.cadreCarre{
+    border-color: black;
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.tableau{
+  border-collapse: collapse;
+  border-top: white;
+  border-bottom: white;
+  border-left: black;
+  border-right: black;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.coinGauche{
+  border-color : white black black black;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.haut{
+  border-top: black;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.bas{
+  border-bottom: black;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.tableauBasDroit{
+  border: black solid;
+  border-width: 1px;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    text-align: left;
+}
